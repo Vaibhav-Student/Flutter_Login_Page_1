@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_page_1/Sign_up_pages/sign_up_pages.dart';
-import 'package:login_page_1/Widgets/container_button.dart';
-import 'package:login_page_1/login_pages/login_pages.dart';
 import 'package:lottie/lottie.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class LoginPages extends StatelessWidget{
+  const LoginPages({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +17,9 @@ class _HomePageState extends State<HomePage> {
           repeat: true, 
         ),
         title: Text(
-          'Home Page',
+          'Login Pages',
           style: GoogleFonts.bungee(
-            textStyle: TextStyle(color: Colors.red,fontSize: 20),
+            textStyle: TextStyle(color: Colors.red,fontSize: 18),
             ),
         ),    
         actions: [
@@ -78,49 +70,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-
-      body:  SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: [
-                
-                SizedBox(height: 10),
-                
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context, 
-                      MaterialPageRoute(
-                        builder: (context) => const LoginPages()
-                      )
-                    );
-                  },
-                  child: ContainerButtons(
-                    buttonText: 'Login Pages',
-                  ),
-                ),
-
-                SizedBox(height: 15),
-
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context, 
-                      MaterialPageRoute(
-                        builder: (context) => const SignUpPages()
-                      )
-                    );
-                  },
-                  child: ContainerButtons(
-                    buttonText: 'Sign-Up Pages',
-                  ),
-                ),
-                SizedBox(height: 10),
-                
-              ],
-            ),
-          ),
-        ),
     );
   }
 }
