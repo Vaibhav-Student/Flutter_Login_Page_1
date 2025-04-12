@@ -9,10 +9,15 @@ class ContainerButtons extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) { // Fixed method name to lowercase
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final orientation = MediaQuery.of(context).orientation;
     return Container(
-      width: 350,
-      height: 100,
+      width: screenWidth * 0.88,
+      height: orientation == Orientation.portrait
+          ? screenHeight * 0.1
+          : screenHeight * 0.3,
       decoration: BoxDecoration(
         color: Colors.deepOrange,
         borderRadius: BorderRadius.circular(15),
