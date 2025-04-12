@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login_page_1/Widgets/container_button.dart';
+import 'package:login_page_1/login_pages/login_page_1.dart';
 import 'package:lottie/lottie.dart';
 
 class LoginPages extends StatelessWidget{
@@ -69,6 +71,31 @@ class LoginPages extends StatelessWidget{
             ),
           ),
         ],
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(height: 10),
+                
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage1()
+                      )
+                    );
+                  },
+                  child: ContainerButtons(
+                    buttonText: 'Login Pages - 1',
+                  ),
+                ),
+
+                SizedBox(height: 15),
+            ],
+          ),
+        ),
       ),
     );
   }
