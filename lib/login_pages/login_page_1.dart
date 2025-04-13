@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
-class LoginPage1 extends StatelessWidget {
+class LoginPage1 extends StatefulWidget {
   const LoginPage1({super.key});
+
+  @override
+  State<LoginPage1> createState() => _LoginPage1State();
+}
+
+class _LoginPage1State extends State<LoginPage1> {
+
+  bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) { 
@@ -73,26 +81,157 @@ class LoginPage1 extends StatelessWidget {
 
       ),
 
-      body: Row(
-        children: [
-          Image.asset(
-            'lib/assets/Images/logoipsum.png',
-            width: 100,
-            height: 50,
-            fit : BoxFit.contain,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Image.asset(
+                    'lib/assets/Images/logoipsum.png',
+                    width: 65,
+                    height: 50,
+                    fit : BoxFit.contain,
+                  ),
+                  Text(
+                   'Logoipsum',
+                   style: GoogleFonts.inter(
+                    textStyle: const TextStyle(
+                      fontSize: 25,
+                      color: Colors.black,
+                      //fontWeight: FontWeight.bold,
+                      letterSpacing: 2.0,
+                    ),
+                   ),
+                  ),
+                ],
+              ),
+        
+              const SizedBox(height: 25),
+        
+              Text(
+                'Sign in to your \nAccount',
+                style: GoogleFonts.inter(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  height: 1.2,
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              Text(
+                'Enter your email and password to log in',
+                style: GoogleFonts.inter(
+                  fontSize: 16,
+                  color: Colors.grey[600],
+                ),
+              ),
+
+              const SizedBox(height: 32),
+              Text(
+                'Email',
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+
+              const SizedBox(height: 8,),
+
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Loisbecket@gmail.com',
+                  hintStyle: GoogleFonts.inter(
+                    color: Colors.grey
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[100],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
+                  ),
+                  contentPadding: const EdgeInsets.all(16),
+                ),
+              ),
+
+              const SizedBox(height: 24,),
+
+              Text(
+                'Password',
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                )
+              ),
+              const SizedBox(height: 8),
+
+             TextFormField(
+              obscureText: !_isPasswordVisible,
+                decoration: InputDecoration(
+                  hintText: '**********',
+                  hintStyle: GoogleFonts.inter(
+                    color: Colors.grey
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[100],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
+                  ),
+                  contentPadding: const EdgeInsets.all(16),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordVisible = !_isPasswordVisible;
+                      });
+                    },
+                  ),
+                ),
+              ),
+
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Forgot Password?',
+                    style: GoogleFonts.inter(
+                      color: Colors.blue[700],
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue[700],
+                  minimumSize: const Size(double.infinity,56),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: Text(
+                  'Log in',
+                  style: GoogleFonts.inter(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+
+            ],
           ),
-          Text(
-           'Logoipsum',
-           style: GoogleFonts.inter(
-            textStyle: const TextStyle(
-              fontSize: 25,
-              color: Colors.black,
-              //fontWeight: FontWeight.bold,
-              letterSpacing: 2.0,
-            ),
-           ),
-          ),
-        ],
+        ),
       )
     );
   }
